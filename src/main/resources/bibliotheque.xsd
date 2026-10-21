@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <!-- Types simples -->
+    <xs:simpleType name="CategorieType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Informatique"/>
+            <xs:enumeration value="Mathématiques"/>
+            <xs:enumeration value="Sciences"/>
+            <xs:enumeration value="Littérature"/>
+            <xs:enumeration value="Autre"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="AnneeType">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="1400"/>
+            <xs:maxInclusive value="2100"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="FiliereType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="LSI1"/>
+            <xs:enumeration value="LSI2"/>
+            <xs:enumeration value="LSI3"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Types complexes -->
+    <xs:complexType name="LivreType">
+        <xs:sequence>
+            <xs:element name="titre" type="xs:string"/>
+            <xs:element name="auteur" type="xs:string" maxOccurs="unbounded"/>
+            <xs:element name="categorie" type="CategorieType"/>
+            <xs:element name="annee" type="AnneeType"/>
+            <xs:element name="exemplaires" type="xs:nonNegativeInteger"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:ID" use="required"/>
+        <xs:attribute name="disponible" type="xs:boolean" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="EtudiantType">
+        <xs:sequence>
+            <xs:element name="nom" type="xs:string"/>
+            <xs:element name="prenom" type="xs:string"/>
+            <xs:element name="filiere" type="FiliereType"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:ID" use="required"/>
+        <xs:attribute name="actif" type="xs:boolean" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="EmpruntType">
+        <xs:sequence>
+            <xs:element name="dateEmprunt" type="xs:date"/>
+            <xs:element name="dateRetourPrevue" type="xs:date"/>
+        </xs:sequence>
+        <xs:attribute name="livreRef" type="xs:IDREF" use="required"/>
+        <xs:attribute name="etudiantRef" type="xs:IDREF" use="required"/>
+    </xs:complexType>
+
+    <!-- Elément racine -->
+    <xs:element name="bibliotheque">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="livres">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="livre" type="LivreType" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="etudiants">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="etudiant" type="EtudiantType" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="emprunts">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="emprunt" type="EmpruntType" minOccurs="0" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

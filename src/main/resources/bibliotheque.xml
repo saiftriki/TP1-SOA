@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bibliotheque xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="bibliotheque.xsd">
+
+    <livres>
+        <livre id="L001" disponible="true">
+            <titre>Architecture orientée services</titre>
+            <auteur>Thomas Erl</auteur>
+            <categorie>Informatique</categorie>
+            <annee>2005</annee>
+            <exemplaires>3</exemplaires>
+        </livre>
+        <livre id="L002" disponible="true">
+            <titre>Algorithmique</titre>
+            <auteur>Thomas Cormen</auteur>
+            <auteur>Charles Leiserson</auteur>
+            <categorie>Informatique</categorie>
+            <annee>2009</annee>
+            <exemplaires>2</exemplaires>
+        </livre>
+        <livre id="L003" disponible="true">
+            <titre>Programmer en Java</titre>
+            <auteur>Claude Delannoy</auteur>
+            <categorie>Informatique</categorie>
+            <annee>2019</annee>
+            <exemplaires>5</exemplaires>
+        </livre>
+        <livre id="L004" disponible="false">
+            <titre>Les Misérables</titre>
+            <auteur>Victor Hugo</auteur>
+            <categorie>Littérature</categorie>
+            <annee>1862</annee>
+            <exemplaires>1</exemplaires>
+        </livre>
+    </livres>
+
+    <etudiants>
+        <etudiant id="E001" actif="true">
+            <nom>Ben Ali</nom>
+            <prenom>Sara</prenom>
+            <filiere>LSI3</filiere>
+        </etudiant>
+        <etudiant id="E002" actif="true">
+            <nom>Trabelsi</nom>
+            <prenom>Ahmed</prenom>
+            <filiere>LSI2</filiere>
+        </etudiant>
+        <etudiant id="E003" actif="false">
+            <nom>Gharbi</nom>
+            <prenom>Mariem</prenom>
+            <filiere>LSI3</filiere>
+        </etudiant>
+    </etudiants>
+
+    <emprunts>
+        <emprunt livreRef="L001" etudiantRef="E001">
+            <dateEmprunt>2026-10-01</dateEmprunt>
+            <dateRetourPrevue>2026-10-15</dateRetourPrevue>
+        </emprunt>
+        <emprunt livreRef="L003" etudiantRef="E001">
+            <dateEmprunt>2026-10-05</dateEmprunt>
+            <dateRetourPrevue>2026-10-19</dateRetourPrevue>
+        </emprunt>
+        <emprunt livreRef="L004" etudiantRef="E002">
+            <dateEmprunt>2026-09-20</dateEmprunt>
+            <dateRetourPrevue>2026-10-04</dateRetourPrevue>
+        </emprunt>
+    </emprunts>
+
+</bibliotheque>
